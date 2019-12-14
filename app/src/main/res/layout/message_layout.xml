@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginHorizontal="5dp"
     android:layout_marginVertical="5dp">
 
@@ -12,34 +12,30 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:background="@drawable/message_layout_bgrnd"
             android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_weight="20"
-            android:layout_height="50dp">
+            android:background="@drawable/message_layout_bgrnd">
+
             <EditText
                 android:id="@+id/toBeSent_message"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Type a message"/>
+                android:hint="Type a message" />
         </LinearLayout>
-
 
 
         <ImageView
             android:id="@+id/send_button"
-            android:padding="2dp"
-            android:layout_weight="1"
             android:layout_width="50dp"
-            android:layout_gravity="bottom"
             android:layout_height="50dp"
-            android:src="@drawable/send_button"/>
+            android:layout_gravity="bottom"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:src="@drawable/send_button" />
 
 
     </LinearLayout>
-
-
-
-
 
 
 </LinearLayout>
