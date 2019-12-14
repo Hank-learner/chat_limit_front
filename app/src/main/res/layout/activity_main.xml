@@ -5,10 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:gravity="center_vertical"
+    android:gravity="center"
     android:orientation="vertical">
 
     <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_marginHorizontal = "20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:met_baseColor="#0056d3"
@@ -17,6 +18,8 @@
         android:hint="username"
         app:met_floatingLabel="highlight"/>
     <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_marginHorizontal = "20dp"
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="password"
@@ -25,6 +28,14 @@
         app:met_primaryColor="#982360"
         app:met_errorColor="#ddaa00"
         app:met_floatingLabel="highlight"/>
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_marginTop="15dp"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login" />
 
 
   <!--  <com.example.interview.MaterialTextField
