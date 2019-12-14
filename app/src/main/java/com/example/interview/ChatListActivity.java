@@ -11,6 +11,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ChatListActivity extends AppCompatActivity {
 
@@ -21,6 +22,7 @@ public class ChatListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_list);
+        ButterKnife.bind(this);
         setSupportActionBar(toolbar);
 
     }
