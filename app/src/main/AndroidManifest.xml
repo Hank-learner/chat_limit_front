@@ -9,12 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChatActivity"></activity>
+        <activity android:name=".Settings" android:theme="@style/AppTheme.NAB"></activity>
+        <activity android:name=".BusinessBot" android:theme="@style/AppTheme.NAB"/>
+        <activity android:name=".ChatActivity" android:theme="@style/AppTheme.NAB"/>
         <activity
             android:name=".ChatListActivity"
             android:label="@string/title_activity_chat_list"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme.NAB">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

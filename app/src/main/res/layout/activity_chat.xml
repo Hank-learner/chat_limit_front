@@ -4,23 +4,11 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/botchat_toolbar"
+        android:id="@+id/chat_toolbar"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Chat bot"
-                android:textSize="20sp"
-                android:textColor="@android:color/white"/>
-        </LinearLayout>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -32,6 +20,8 @@
 
     <include
         android:id="@+id/mlayout"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="5dp"
         layout="@layout/message_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

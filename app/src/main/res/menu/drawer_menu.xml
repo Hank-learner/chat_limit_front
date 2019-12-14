@@ -6,14 +6,16 @@
             android:id="@+id/friends_chat"
             android:title="Friends Chat"/>
         <item
-            android:id="@+id/bot_chat"
-            android:title="Bot Chat"/>
-        <item
-            android:id="@+id/probot_chat"
-            android:title="Professional bot Chat"/>
-        <item
-            android:id="@+id/settings"
-            android:title="Chat Settings"/>
+            android:id="@+id/busibot_chat"
+            android:title="Business Bot"/>
     </group>
+
+    <item android:title="More">
+        <menu>
+            <item
+                android:id="@+id/settings"
+                android:title="Chat Settings"/>
+        </menu>
+    </item>
 
 </menu>
