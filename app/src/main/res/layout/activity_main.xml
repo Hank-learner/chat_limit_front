@@ -1,18 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:gravity="center_vertical"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:met_baseColor="#0056d3"
+        app:met_primaryColor="#982360"
+        app:met_errorColor="#ddaa00"
+        android:hint="username"
+        app:met_floatingLabel="highlight"/>
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        app:met_baseColor="#0056d3"
+        android:inputType="textPassword"
+        app:met_primaryColor="#982360"
+        app:met_errorColor="#ddaa00"
+        app:met_floatingLabel="highlight"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+  <!--  <com.example.interview.MaterialTextField
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        app:mtf_backgroundColor="#ba1b1d"
+        app:mtf_cardCollapsedHeight="2dp"
+        app:mtf_image="@drawable/useredit3"
+        app:mtf_labelColor="#FFFFFF">
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="E-mail"
+            android:imeOptions="actionNext"
+            android:maxLines="1"
+            android:textColor="#000"
+            android:textCursorDrawable="@drawable/colour_cursor"
+            android:textSize="15sp" />
+
+    </com.example.interview.MaterialTextField>
+
+    <com.example.interview.MaterialTextField
+        android:id="@+id/editTextPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        app:mtf_backgroundColor="#ba1b1d"
+        app:mtf_cardCollapsedHeight="2dp"
+        app:mtf_image="@drawable/passedit3"
+        app:mtf_labelColor="#FFFFFF">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="#333"
+            android:textCursorDrawable="@drawable/colour_cursor"
+            android:textSize="15sp" />
+    </com.example.interview.MaterialTextField> -->
+
+</LinearLayout>
