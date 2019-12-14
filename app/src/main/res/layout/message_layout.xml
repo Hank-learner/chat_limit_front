@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:elevation="15dp"
+    app:cardCornerRadius="5dp"
+    android:layout_marginHorizontal="5dp"
+    android:layout_marginVertical="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="20"
+            android:layout_height="50dp">
+            <EditText
+                android:id="@+id/toBeSent_message"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Type a message"/>
+        </LinearLayout>
+
+
+
+        <ImageView
+            android:id="@+id/send_button"
+            android:padding="2dp"
+            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_gravity="bottom"
+            android:layout_height="50dp"
+            android:src="@drawable/send_button"/>
+
+
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>
