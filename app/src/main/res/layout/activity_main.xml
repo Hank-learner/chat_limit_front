@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
     tools:context=".MainActivity">
-
+    
     <ImageView
         android:id="@+id/back_icon"
         android:layout_width="38dp"
@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/back_icon" />
 
     <EditText
-        android:id="@+id/usrname_edtxt"
+        android:id="@+id/username"
         android:textColor="#EBEBEB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.15" />
 
     <EditText
-        android:id="@+id/password_edtxt"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#EBEBEB"
@@ -68,7 +68,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usrname_edtxt"
+        app:layout_constraintTop_toBottomOf="@+id/username"
         app:layout_constraintVertical_bias="0.04" />
 
     <TextView
@@ -85,7 +85,7 @@
         app:layout_constraintBottom_toTopOf="@+id/login_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edtxt"
+        app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.13" />
 
     <Button
@@ -104,7 +104,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password_edtxt"
+        app:layout_constraintTop_toBottomOf="@+id/password"
         app:layout_constraintVertical_bias="0.28" />
 
     <TextView

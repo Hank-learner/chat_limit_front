@@ -5,14 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 //
 //    @BindView(R.id.editTextPassword)
 //    MaterialTextField editTextPassword;
+    @BindView(R.id.username)
+    MaterialEditText username;
+    @BindView(R.id.password)
+    MaterialEditText password;
 
     @BindView(R.id.login_button)
     Button Login_button;
@@ -37,8 +52,29 @@ public class MainActivity extends AppCompatActivity {
         Login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, ChatListActivity.class));
-                overridePendingTransition  (R.anim.right_in, R.anim.right_out);
+                Gson gson = new GsonBuilder()
+                        .setLenient()
+                        .create();
+                Retrofit retrofit=new Retrofit.Builder()
+                        .baseUrl(Api.BASE_URL)
+                        .addConverterFactory(GsonConverterFactory.create(gson))
+                        .build();
+                Api myapi=retrofit.create(Api.class);
+                Call<authres> call=myapi.signin(username.getText().toString(),password.getText().toString());
+                call.enqueue(new Callback<authres>() {
+                    @Override
+                    public void onResponse(Call<authres> call, Response<authres> response) {
+                        Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<authres> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),"gfuyfuy",Toast.LENGTH_SHORT).show();
+                        Log.d("!!!!!!!!!!!!!",t.getMessage());
+                    }
+                });
+               // startActivity(new Intent(MainActivity.this, ChatListActivity.class));
+               // overridePendingTransition  (R.anim.right_in, R.anim.right_out);
             }
         });
     }
