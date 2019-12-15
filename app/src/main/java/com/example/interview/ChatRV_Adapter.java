@@ -76,20 +76,18 @@ public class ChatRV_Adapter extends RecyclerView.Adapter {
     }
 
     private class SentChatViewHolder extends RecyclerView.ViewHolder {
-        TextView messageText, timeText, nameText;
+        TextView messageText, timeText;
 
         SentChatViewHolder(View itemView) {
             super(itemView);
 
             messageText = (TextView) itemView.findViewById(R.id.text_message_body);
             timeText = (TextView) itemView.findViewById(R.id.text_message_time);
-            nameText = (TextView) itemView.findViewById(R.id.text_message_name);
         }
 
         void bind(ChatMessage message) {
             messageText.setText(message.getMessage());
             timeText.setText(message.getTimeStamp());
-            nameText.setText(message.getMessage_owner());
         }
     }
 
