@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -33,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 //    @BindView(R.id.editTextPassword)
 //    MaterialTextField editTextPassword;
     @BindView(R.id.username)
-    MaterialEditText username;
+    EditText username;
     @BindView(R.id.password)
-    MaterialEditText password;
+    EditText password;
 
     @BindView(R.id.login_button)
     Button Login_button;
@@ -65,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<authres> call, Response<authres> response) {
                         Toast.makeText(getApplicationContext(),response.body().getMessage(),Toast.LENGTH_SHORT).show();
+                        if(response.body().getMessage().equals("success"))
+                        {
+                             startActivity(new Intent(MainActivity.this, ChatListActivity.class));
+                             overridePendingTransition  (R.anim.right_in, R.anim.right_out);
+                        }
                     }
 
                     @Override
@@ -73,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("!!!!!!!!!!!!!",t.getMessage());
                     }
                 });
-               // startActivity(new Intent(MainActivity.this, ChatListActivity.class));
-               // overridePendingTransition  (R.anim.right_in, R.anim.right_out);
             }
         });
     }

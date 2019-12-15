@@ -16,6 +16,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,12 +32,15 @@ import butterknife.ButterKnife;
 
 public class ChatActivity extends AppCompatActivity {
 
+    Thread Thread1 = null;
     private String TAG = ChatActivity.class.getSimpleName();
     private Intent intent;
     private EditText editText;
     private ImageView sendbutt;
     private List<ChatMessage> allMessages;
     private ChatRV_Adapter adapter;
+    String SERVER_IP;
+    int SERVER_PORT;
 
     @BindView(R.id.chat_rv)
     RecyclerView rv;
@@ -51,9 +59,12 @@ public class ChatActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
+        SERVER_IP="172.17.239.137:1235";
+        SERVER_PORT=1235;
         editText = message_enter.findViewById(R.id.toBeSent_message);
         sendbutt = message_enter.findViewById(R.id.send_button);
-
+        Thread1 = new Thread(new Thread1());
+        Thread1.start();
         allMessages = new ArrayList<>();
         adapter = new ChatRV_Adapter(getApplicationContext(), allMessages);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -63,12 +74,79 @@ public class ChatActivity extends AppCompatActivity {
         sendbutt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+                String message = editText.getText().toString().trim();
+                if (!message.isEmpty()) {
+                    new Thread(new Thread3(message)).start();
+                }
                 updateList();
                 return true;
             }
         });
     }
-
+    private PrintWriter output;
+    private BufferedReader input;
+    class Thread1 implements Runnable {
+        public void run() {
+            Socket socket;
+            try {
+                socket = new Socket(SERVER_IP, SERVER_PORT);
+                output = new PrintWriter(socket.getOutputStream());
+                input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d("!!!!!!!!!","connected");
+                    }
+                });
+                new Thread(new Thread2()).start();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Log.d("!!!!!!!!!","dksjhgiu");
+            }
+        }
+    }
+    class Thread2 implements Runnable {
+        @Override
+        public void run() {
+            while (true) {
+                try {
+                    final String message = input.readLine();
+                    if (message!= null) {
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //tvMessages.append("server: " + message + "\n");
+                            }
+                        });
+                    } else {
+                        Thread1 = new Thread(new Thread1());
+                        Thread1.start();
+                        return;
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    class Thread3 implements Runnable {
+        private String message;
+        Thread3(String message) {
+            this.message = message;
+        }
+        @Override
+        public void run() {
+            output.write(message);
+            output.flush();
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+              //      tvMessages.append("client: " + message + "\n");
+                //    etMessage.setText("");
+                }
+            });
+        }
+    }
     private void updateList(){
         if(!TextUtils.isEmpty(editText.getText().toString())){
             ChatMessage newMessage = new ChatMessage(editText.getText().toString(),
